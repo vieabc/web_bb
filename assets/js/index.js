@@ -5,7 +5,7 @@ $(function () {
             //do something
             localStorage.removeItem("token");
             location.href = "/login.html";
-            console.log(index);
+            // console.log(index);
             layer.close(index);
 
         });
@@ -26,17 +26,11 @@ function getUserfo() {
 
         },
         //无论成功或者失败 都会调用complete 限制没登陆的用户加入主页
-        complete: function (res) {
-            console.log(res);
-            if (res.responseJSON.status === 1) {
-                localStorage.removeItem('token');
-                location.href = "/login.html";
-            }
-        }
+
     })
 }
 function renderimg(user) {
-    var name = user.nikename || user.username;
+    var name = user.nickname || user.username;
     $('#welcome').html("欢迎&nbsp;" + name);
     if (user.user_pic) {
         $(".layui-nav-img").attr("src", user.user_pic).show();
